@@ -11,7 +11,9 @@ def book_list_view(library: dict) -> None:
 
 
 books = {
-    "Оно": ["Стивен Кинг", 1986, "В наличии"]
+    "Оно": {"author": "Стивен Кинг",
+            "year": 1986,
+            "availability": "В наличии"}
 }
 
 book_list_view(books)
