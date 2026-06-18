@@ -9,7 +9,7 @@ def book_list_view(library: dict) -> None:
     print()
 
 
-def validate_book_data(title: str, author: str, year: int):
+def validate_book_data(title: str, author: str, year: int) -> bool:
     return False if type(title) != str or type(author) != str or type(year) != int else True
 
 
