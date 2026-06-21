@@ -13,12 +13,11 @@ def validate_book_data(title: str, author: str, year: int) -> bool:
     return False if type(title) != str or type(author) != str or type(year) != int else True
 
 
-def add_book(title: str, author: str, year: int) -> None:
+def add_book(books: dict, title: str, author: str, year: int) -> None:
     if not validate_book_data(title, author, year):
         print(f"Для добавления книги использованы некорректные данные.\n")
         return
 
-    global books
     if title in books:
         input_data = input("Книга уже добавлена. Хотите обновить данные? (Да/Нет): ").lower().strip()
         if input_data == "да":
@@ -40,7 +39,7 @@ books = {
 }
 
 book_list_view(books)
-add_book("Кэрри", "Стивен Кинг", 1974)
+add_book(books,"Кэрри", "Стивен Кинг", 1974)
 book_list_view(books)
-add_book("Кэрри", "Стивен Кинг", 2001)
+add_book(books,"Кэрри", "Стивен Кинг", 2001)
 book_list_view(books)
