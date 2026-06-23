@@ -29,6 +29,19 @@ def add_book(books: dict, title: str, author: str, year: int) -> None:
         print(f"\nКнига \"{title}\" добавлена в библиотеку.\n")
 
 
+def remove_book(books: dict, title: str) -> None:
+    if not isinstance(books, dict) or not isinstance(title, str):
+        print("\nВведены некорректные данные для удаления.\n")
+        return
+
+    if title in books:
+        del books[title]
+        print(f"\nКнига {title} удалена.\n")
+        return
+
+    print("\nКнига с указанным названием не найдена.\n")
+
+
 books = {
     "Оно": {"author": "Стивен Кинг",
             "year": 1986,
@@ -39,4 +52,6 @@ book_list_view(books)
 add_book(books,"Кэрри", "Стивен Кинг", 1974)
 book_list_view(books)
 add_book(books,"Кэрри", "Стивен Кинг", 2001)
+book_list_view(books)
+remove_book(books, "Кэрри")
 book_list_view(books)
