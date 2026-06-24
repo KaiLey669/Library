@@ -30,10 +30,6 @@ def add_book(books: dict, title: str, author: str, year: int) -> None:
 
 
 def remove_book(books: dict, title: str) -> None:
-    if not isinstance(books, dict) or not isinstance(title, str):
-        print("\nВведены некорректные данные для удаления.\n")
-        return
-
     if title in books:
         del books[title]
         print(f"\nКнига {title} удалена.\n")
