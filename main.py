@@ -38,16 +38,42 @@ def remove_book(books: dict, title: str) -> None:
     print("\nКнига с указанным названием не найдена.\n")
 
 
+def issue_book(books: dict, title: str) -> None:
+    if title not in books:
+        print("\nКнига отсутствует в библиотеке.\n")
+        return
+
+    if books[title]["availability"]:
+        books[title]["availability"] = False
+        print(f"\nКнига {title} успешно выдана.\n")
+    else:
+        print(f"\nКнига {title} уже выдана или еще не был проставлен статус.\n")
+
+
+def return_book(books: dict, title: str) -> None:
+    if title not in books:
+        print("\nКнига отсутствует в библиотеке.\n")
+        return
+
+    if books[title]["availability"]:
+        print(f"\nКнига {title} уже в наличии.\n")
+    else:
+        books[title]["availability"] = True
+        print(f"\nКнига {title} поступила в библиотеку.\n")
+
+
 books = {
     "Оно": {"author": "Стивен Кинг",
             "year": 1986,
-            "availability": "В наличии"}
+            "availability": True}
 }
 
 book_list_view(books)
+issue_book(books, "Оно")
 add_book(books,"Кэрри", "Стивен Кинг", 1974)
 book_list_view(books)
-add_book(books,"Кэрри", "Стивен Кинг", 2001)
-book_list_view(books)
-remove_book(books, "Кэрри")
-book_list_view(books)
+return_book(books, "Кэрри")
+return_book(books, "Кэрри")
+issue_book(books, "Кэрри")
+issue_book(books, "Кзрри")
+return_book(books, "Кэрри")
