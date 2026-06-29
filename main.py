@@ -62,6 +62,30 @@ def return_book(books: dict, title: str) -> None:
         print(f"\nКнига {title} поступила в библиотеку.\n")
 
 
+def find_book(books: dict, title: str) -> None:
+    book = books.get(title)
+    if book is None:
+        print(f"Книга \"{title}\" отсутствует в библиотеке.")
+        return
+
+    print_book_info(book, title)
+
+
+def get_availability_status(book: dict) -> str:
+    if book["availability"] is None:
+        return "Не выставлен"
+    return "В наличии" if book["availability"] else "Отсутствует"
+
+
+def print_book_info(book: dict, title: str) -> None:
+    status = get_availability_status(book)
+    print(f"\nИнформация по книге \"{title}\":",
+          f"Автор - {book["author"]}",
+          f"Год издания - {book["year"]}",
+          f"Статус - {status}",
+          sep="\n")
+
+
 books = {
     "Оно": {"author": "Стивен Кинг",
             "year": 1986,
@@ -69,11 +93,7 @@ books = {
 }
 
 book_list_view(books)
-issue_book(books, "Оно")
 add_book(books,"Кэрри", "Стивен Кинг", 1974)
 book_list_view(books)
-return_book(books, "Кэрри")
-return_book(books, "Кэрри")
-issue_book(books, "Кэрри")
-issue_book(books, "Кзрри")
-return_book(books, "Кэрри")
+find_book(books, "Оно")
+find_book(books, "Кэрри")
