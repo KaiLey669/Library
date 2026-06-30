@@ -73,8 +73,8 @@ def find_book(books: dict, title: str) -> None:
 
 def get_availability_status(book: dict) -> str:
     if book["availability"] is None:
-        return "Не выставлен"
-    return "В наличии" if book["availability"] else "Отсутствует"
+        return "Книга в библиотеке, но статус не определен"
+    return "Книга доступна" if book["availability"] else "Книга выдана"
 
 
 def print_book_info(book: dict, title: str) -> None:
